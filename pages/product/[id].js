@@ -124,22 +124,36 @@ const Product = ({ pizza }) => {
 
 export const getStaticProps = async ({ params }) => {
   let baseUrl = "http://localhost:3000";
-  let deployUrl = "https://donjuan-pizzeria.vercel.app";
 
-  
-  const res = await axios.get(`${deployUrl}/api/products/${params.id}`);
-  //const res = await axios.get(`${baseUrl}/api/products/${params.id}`);
+  if (process.env.VERCEL_URL === "http://localhost:3000") {
+    baseUrl = "http://localhost:3000";
+  } else {
+    baseUrl = "https://vercel.com/api/now/ip";
+  }
+
+  //let deployUrl = "https://donjuan-pizzeria.vercel.app";
+
+  //const res = await axios.get(`${deployUrl}/api/products/${params.id}`);
+  const res = await axios.get(`${baseUrl}/api/products/${params.id}`);
   return {
     props: { pizza: res.data },
   };
 };
 
+
 export const getStaticPaths = async () => {
   let baseUrl = "http://localhost:3000";
-  let deployUrl = "https://donjuan-pizzeria.vercel.app";
 
-  const res = await axios.get(`${deployUrl}/api/products`);
-  //const res = await axios.get(`${baseUrl}/api/products`);
+  if (process.env.VERCEL_URL === "http://localhost:3000") {
+    baseUrl = "http://localhost:3000";
+  } else {
+    baseUrl = "https://vercel.com/api/now/ip";
+  }
+
+  //let deployUrl = "https://donjuan-pizzeria.vercel.app";
+  
+  //const res = await axios.get(`${deployUrl}/api/products`);
+  const res = await axios.get(`${baseUrl}/api/products`);
   const paths = res.data.map((pizza) => ({
     params: { id: pizza._id },
   }));

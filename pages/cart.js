@@ -17,8 +17,6 @@ const Cart = ({ pizzas }) => {
   const router = useRouter();
   
 
-  console.log(pizzas);
-
   const createOrder = async (data) => {
     const url = process.env.VERCEL_URL;
     try {
