@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import OrdersList from '../../../components/OrdersList.js'
+import {MongoClient} from 'mongodb'
 
 const index = ({ orders, products}) => {
   return (
@@ -10,29 +11,28 @@ const index = ({ orders, products}) => {
   )
 }
 
-export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || "";
+export async function getStaticProps() {
+  const DATABASE_NAME = "DonJuan";
+  const DATABASE_PASSWORD = "fernando";
 
-  if (myCookie.token !== process.env.TOKEN) {
-    return {
-      redirect: {
-        destination: "/admin/login",
-        permanent: false,
-      },
-    };
-  }
+  const client = await MongoClient.connect(
+    `mongodb+srv://manax:${DATABASE_PASSWORD}@donjuan.wm8z2.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
+  );
+  const db = client.db();
+  const productsCollection = db.collection("products");
+  const pizzas = await productsCollection.find().toArray();
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
-  
+  const ordersCollection = db.collection("orders");
+  const orders = await ordersCollection.find().toArray();
 
+  client.close();
 
   return {
     props: {
-      products: productRes.data,
-      orders: orderRes.data,
+      pizzas: JSON.parse(JSON.stringify(pizzas)),
+      orders: JSON.parse(JSON.stringify(orders)),
     },
   };
-};
+}
 
 export default index

@@ -40,20 +40,6 @@ const Product = ({ pizza }) => {
     }
   };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const changePrice = (number) => {
     setPrice(price + number);
   };

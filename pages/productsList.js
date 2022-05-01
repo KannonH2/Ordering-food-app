@@ -81,22 +81,6 @@ const productsList = ({ pizzas }) => {
   );
 };
 
-// export const getServerSideProps = async (ctx) => {
-//   const myCookie = ctx.req?.cookies || "";
-//   let admin = false;
-//   if (myCookie.token === process.env.TOKEN) {
-//     admin = true;
-//   }
-//   const res = await axios.get("http://localhost:3000/api/products");
-
-//   return {
-//     props: {
-//       pizzas: res.data,
-//       admin,
-//     },
-//   };
-// };
-
 export async function getStaticProps() {
   const DATABASE_NAME = "DonJuan";
   const DATABASE_PASSWORD = "fernando";

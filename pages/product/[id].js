@@ -5,7 +5,6 @@ import axios from "axios";
 import { addProduct } from "../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import Footer from "../../components/Footer";
-import dbConnect from "../../util/mongo";
 
 
 const Product = ({ pizza }) => {

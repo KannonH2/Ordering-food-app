@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
 import Link from "next/link";
-
+import {MongoClient} from 'mongodb'
 
 const Index = ({ orders, products }) => {
   const [pizzaList, setPizzaList] = useState(products);
@@ -86,27 +86,28 @@ const Index = ({ orders, products }) => {
   );
 };
 
-export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || "";
+export async function getStaticProps() {
+  const DATABASE_NAME = "DonJuan";
+  const DATABASE_PASSWORD = "fernando";
 
-  if (myCookie.token !== process.env.TOKEN) {
-    return {
-      redirect: {
-        destination: "/admin/login",
-        permanent: false,
-      },
-    };
-  }
+  const client = await MongoClient.connect(
+    `mongodb+srv://manax:${DATABASE_PASSWORD}@donjuan.wm8z2.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
+  );
+  const db = client.db();
+  const productsCollection = db.collection("products");
+  const products = await productsCollection.find().toArray();
 
-  const productRes = await axios.get("http://localhost:3000/api/products");
-  const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const ordersCollection = db.collection("orders");
+  const orders = await ordersCollection.find().toArray();
+
+  client.close();
 
   return {
     props: {
-      orders: orderRes.data,
-      products: productRes.data,
+      products: JSON.parse(JSON.stringify(products)),
+      orders: JSON.parse(JSON.stringify(orders)),
     },
   };
-};
+}
 
 export default Index;

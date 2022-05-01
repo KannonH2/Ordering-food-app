@@ -3,16 +3,21 @@ import Image from "next/image";
 import axios from "axios";
 
 const Order = ({ order }) => {
-  const status = order.status;
 
-  const statusClass = (index) => {
-    if (index - status < 1) return styles.done;
-    if (index - status === 1) return styles.inProgress;
-    if (index - status > 1) return styles.undone;
-  };
+
+  // const status = order.status;
+
+  // const statusClass = (index) => {
+  //   if (index - status < 1) return styles.done;
+  //   if (index - status === 1) return styles.inProgress;
+  //   if (index - status > 1) return styles.undone;
+  // };
+
+  console.log(order);
+
   return (
     <div className={styles.container}>
-      <div className={styles.left}>
+      {/* <div className={styles.left}>
         <div className={styles.row}>
           <table className={styles.table}>
             <tr className={styles.trTitle}>
@@ -116,16 +121,24 @@ const Order = ({ order }) => {
             PAID
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+  let baseUrl = "http://localhost:3000";
+  if (baseUrl) {
+    baseUrl = "https://donjuan-pizzeria.vercel.app/";
+  }
+  const res = await axios.get(`${baseUrl}/api/orders/${params.id}`);
+  
   return {
     props: { order: res.data },
   };
 };
+
+
+
 
 export default Order;

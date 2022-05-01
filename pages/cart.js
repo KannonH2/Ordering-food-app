@@ -42,11 +42,10 @@ const Cart = ({ pizza }) => {
           <table className={styles.table}>
             <tbody>
               <tr className={styles.trTitle}>
-                <th>Product</th>
-                <th>Name</th>
-                <th>Entrega</th>
-                <th>Price</th>
-                <th>Quantity</th>
+                <th>Producto</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
                 <th>Total</th>
               </tr>
             </tbody>
@@ -67,13 +66,6 @@ const Cart = ({ pizza }) => {
                     <span className={styles.name}>{product.title}</span>
                   </td>
                   <td id={styles.border}>
-                    <span className={styles.extras}>
-                      {product.extras.map((extra) => (
-                        <span key={extra._id}>{extra.text}, </span>
-                      ))}
-                    </span>
-                  </td>
-                  <td id={styles.border}>
                     <span className={styles.price}>${product.price}</span>
                   </td>
                   <td id={styles.border}>
@@ -91,18 +83,18 @@ const Cart = ({ pizza }) => {
         </div>
         <div className={styles.right}>
           <div className={styles.wrapper}>
-            <h2 className={styles.title}>CART TOTAL</h2>
+            <h2 className={styles.title}>TOTAL DEL CARRITO</h2>
             <div className={styles.totalText}>
               <b className={styles.totalTextTitle}>Subtotal:</b>${cart.total}
             </div>
             <div className={styles.totalText}>
-              <b className={styles.totalTextTitle}>Discount:</b>$0.00
+              <b className={styles.totalTextTitle}>Descuento:</b>$0.00
             </div>
             <div className={styles.totalText}>
               <b className={styles.totalTextTitle}>Total:</b>${cart.total}
             </div>
             <button onClick={handleClick} className={styles.button}>
-              CHECKOUT NOW!
+              HACER PEDIDO AHORA!
             </button>
           </div>
         </div>
@@ -125,13 +117,24 @@ const Cart = ({ pizza }) => {
   );
 };
 
-export const getServerSideProps = async ({ params }) => {
-  const res = await axios.get(`http://localhost:3000/api/products/`);
+export async function getStaticProps() {
+  const DATABASE_NAME = "DonJuan";
+  const DATABASE_PASSWORD = "fernando";
+
+  const client = await MongoClient.connect(
+    `mongodb+srv://manax:${DATABASE_PASSWORD}@donjuan.wm8z2.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
+  );
+  const db = client.db();
+  const productsCollection = db.collection("products");
+  const pizzas = await productsCollection.find().toArray();
+
+  client.close();
+
   return {
     props: {
-      pizza: res.data,
+      pizzas: JSON.parse(JSON.stringify(pizzas)),
     },
   };
-};
+}
 
 export default Cart;
