@@ -1,12 +1,13 @@
 import styles from "../styles/Cart.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
 import OrderDetail from "../components/OrderDetails";
 import Footer from "../components/Footer";
+import {MongoClient} from 'mongodb';
 
 const Cart = ({ pizza }) => {
   const cart = useSelector((state) => state.cart);
