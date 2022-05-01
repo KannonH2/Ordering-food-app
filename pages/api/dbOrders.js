@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const handler = async (req, res) => {
+const getOrders = async (req, res) => {
   const DATABASE_NAME = "DonJuan";
   const DATABASE_PASSWORD = "fernando";
 
@@ -32,4 +32,4 @@ const handler = async (req, res) => {
   }
 };
 
-export default handler;
+export default getOrders;

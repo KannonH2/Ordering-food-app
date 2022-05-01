@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const handler = async (req, res) => {
+const getProducts = async (req, res) => {
   const DATABASE_NAME = "DonJuan";
   const DATABASE_PASSWORD = "fernando";
 
@@ -19,9 +19,7 @@ const handler = async (req, res) => {
 
   if (req.method === "GET") {
     const client = await MongoClient.connect(
-      `mongodb+srv://manax:${
-        DATABASE_PASSWORD
-      }@donjuan.wm8z2.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
+      `mongodb+srv://manax:${DATABASE_PASSWORD}@donjuan.wm8z2.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
     );
     const db = client.db();
 
@@ -32,7 +30,6 @@ const handler = async (req, res) => {
 
     res.status(200).send(products);
   }
-
 };
 
-export default handler;
+export default getProducts;
