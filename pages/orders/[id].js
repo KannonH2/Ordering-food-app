@@ -3,21 +3,19 @@ import Image from "next/image";
 import axios from "axios";
 
 const Order = ({ order }) => {
+   const status = order.status;
 
-
-  // const status = order.status;
-
-  // const statusClass = (index) => {
-  //   if (index - status < 1) return styles.done;
-  //   if (index - status === 1) return styles.inProgress;
-  //   if (index - status > 1) return styles.undone;
-  // };
+   const statusClass = (index) => {
+     if (index - status < 1) return styles.done;
+     if (index - status === 1) return styles.inProgress;
+     if (index - status > 1) return styles.undone;
+   };
 
   console.log(order);
 
   return (
     <div className={styles.container}>
-      {/* <div className={styles.left}>
+      <div className={styles.left}>
         <div className={styles.row}>
           <table className={styles.table}>
             <tr className={styles.trTitle}>
@@ -121,7 +119,7 @@ const Order = ({ order }) => {
             PAID
           </button>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
