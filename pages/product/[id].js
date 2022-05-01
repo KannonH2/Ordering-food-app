@@ -112,19 +112,26 @@ const Product = ({ pizza }) => {
   );
 };
 
+// export const getServerSideProps = async ({ params }) => {
+//  const res = await axios.get(`http://localhost:3000/api/products/${params.id}`);
+ 
+//  return {
+//    props: {
+//      pizza: res.data,
+//    },
+//  };
 
- export const getServerSideProps = async ({ params }) => {
-  let baseUrl = 'http://localhost:3000'
-  if(process.env.Vercel_URL) {
-  baseUrl = process.env.Vercel_URL === 'http://localhost:3000' ? 'https://donjuan-pizzeria.vercel.app/': process.env.Vercel_URL
-}
-  const res = await axios.get(`${baseUrl}/api/product/${params.id}`);
+export const getServerSideProps = async ({ params }) => {
+  let baseUrl = "http://localhost:3000";
+  if (baseUrl) {
+    baseUrl = "https://donjuan-pizzeria.vercel.app/";
+  }
+  const res = await axios.get(`${baseUrl}/api/products/${params.id}`);
   
   return {
     props: { pizza: res.data },
   };
 };
-
 
 
 export default Product;
