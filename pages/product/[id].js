@@ -133,5 +133,20 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
+export const getStaticPaths = async () => {
+  let baseUrl = "http://localhost:3000";
+  if (baseUrl !== "http://localhost:3000") {
+    baseUrl = "https://donjuan-pizzeria.vercel.app/";
+  }
+  const res = await axios.get(`${baseUrl}/api/products`);
+  const paths = res.data.map((pizza) => ({
+    params: { id: pizza._id },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
 
 export default Product;
