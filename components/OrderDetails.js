@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactWhatsapp from "react-whatsapp";
 import styles from "../styles/OrderDetails.module.css";
+import { useRouter } from "next/router";
 
 const OrderDetails = ({
   total,
@@ -14,18 +15,22 @@ const OrderDetails = ({
   const [phone, setPhone] = useState("");
   const [comments, setComments] = useState("");
   const [extraOption, setExtraOption] = useState("");
+  const router = useRouter();
 
   const handleClick = () => {
-    createOrder({
-      customer,
-      address,
-      phone,
-      comments,
-      extraOption,
-      total,
-      productsDetail,
-      method: 0,
-    });
+    // createOrder({
+    //   customer,
+    //   address,
+    //   phone,
+    //   comments,
+    //   extraOption,
+    //   total,
+    //   productsDetail,
+    //   method: 0,
+    // });
+    router.push("/");
+
+
   };
 
   const handleDelivery = (e) => {

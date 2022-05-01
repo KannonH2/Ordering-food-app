@@ -2,7 +2,6 @@ import styles from "../styles/Cart.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
 import OrderDetail from "../components/OrderDetails";
@@ -18,12 +17,23 @@ const Cart = ({ pizzas }) => {
   
 
   const createOrder = async (data) => {
-    const url = process.env.VERCEL_URL;
     try {
-      const res = await axios.post(url, data);
-      if (res.status === 201) {
+      // const res = await axios.post(url, data);
+      // if (res.status === 201) {
+      //   dispatch(reset());
+      //   router.push(`/orders/${res.data._id}`);
+      // }
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        body: JSON.stringify(mealData),
+        headers: {
+          "content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      if (data.status === 201) {
         dispatch(reset());
-        router.push(`/orders/${res.data._id}`);
+        router.push(`/orders/${data._id}`);
       }
     } catch (err) {
       console.log(err);
