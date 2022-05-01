@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 
 
 const Product = ({ pizza }) => {
+  console.log(pizza);
   const [price, setPrice] = useState(pizza.prices[0]);
   const [size, setSize] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -122,29 +123,23 @@ const Product = ({ pizza }) => {
 //  };
 
 export const getStaticProps = async ({ params }) => {
-  let baseUrl = "https://donjuan-pizzeria.vercel.app";
+  let baseUrl = "http://localhost:3000";
+  let deployUrl = "https://donjuan-pizzeria.vercel.app";
 
-  if (baseUrl !== "http://localhost:3000") {
-    baseUrl = "https://donjuan-pizzeria.vercel.app";
-  }else{
-    baseUrl = "http://localhost:3000";
-  }
-  const res = await axios.get(`${baseUrl}/api/products/${params.id}`);
   
+  const res = await axios.get(`${deployUrl}/api/products/${params.id}`);
+  //const res = await axios.get(`${baseUrl}/api/products/${params.id}`);
   return {
     props: { pizza: res.data },
   };
 };
 
 export const getStaticPaths = async () => {
-  let baseUrl = "https://donjuan-pizzeria.vercel.app";
-  
-  if (baseUrl !== "http://localhost:3000") {
-    baseUrl = "https://donjuan-pizzeria.vercel.app";
-  }else{
-    baseUrl = "http://localhost:3000";
-  }
-  const res = await axios.get(`${baseUrl}/api/products`);
+  let baseUrl = "http://localhost:3000";
+  let deployUrl = "https://donjuan-pizzeria.vercel.app";
+
+  const res = await axios.get(`${deployUrl}/api/products`);
+  //const res = await axios.get(`${baseUrl}/api/products`);
   const paths = res.data.map((pizza) => ({
     params: { id: pizza._id },
   }));

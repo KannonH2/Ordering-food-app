@@ -9,7 +9,7 @@ import OrderDetail from "../components/OrderDetails";
 import Footer from "../components/Footer";
 import {MongoClient} from 'mongodb';
 
-const Cart = ({ pizza }) => {
+const Cart = ({ pizzas }) => {
   const cart = useSelector((state) => state.cart);
   const [open, setOpen] = useState(false);
   const [cash, setCash] = useState(false);
@@ -17,11 +17,12 @@ const Cart = ({ pizza }) => {
   const router = useRouter();
   
 
-  
+  console.log(pizzas);
 
   const createOrder = async (data) => {
+    const url = process.env.VERCEL_URL;
     try {
-      const res = await axios.post("http://localhost:3000/api/orders", data);
+      const res = await axios.post(url, data);
       if (res.status === 201) {
         dispatch(reset());
         router.push(`/orders/${res.data._id}`);
