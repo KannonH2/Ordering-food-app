@@ -114,10 +114,10 @@ const Product = ({ pizza }) => {
 
 
  export const getServerSideProps = async ({ params }) => {
-  let baseUrl = "http://localhost:3000";
-  if (baseUrl) {
-    baseUrl = "https://donjuan-pizzeria.vercel.app/";
-  }
+  let baseUrl = 'http://localhost:3000'
+  if(process.env.Vercel_URL) {
+  baseUrl = process.env.Vercel_URL === 'http://localhost:3000' ? 'https://donjuan-pizzeria.vercel.app/': process.env.Vercel_URL
+}
   const res = await axios.get(`${baseUrl}/api/product/${params.id}`);
   
   return {
