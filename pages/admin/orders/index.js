@@ -23,20 +23,15 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
-  //const productRes = await axios.get("http://localhost:3000/api/products");
-  //const orderRes = await axios.get("http://localhost:3000/api/orders");
+  const productRes = await axios.get("http://localhost:3000/api/products");
+  const orderRes = await axios.get("http://localhost:3000/api/orders");
   
-  const {db} = await connectToDatabase();
-  const productRes = db.collection("products");
-  const orderRes = db.collection("orders");
-  const products = await productRes.find({}, {_id:0}).toArray();
-  const orders = await orderRes.find({}, {_id:0}).toArray();
-  
+
 
   return {
     props: {
-      products:JSON.parse(JSON.stringify(products)),
-      orders:JSON.parse(JSON.stringify(orders)),
+      products: productRes.data,
+      orders: orderRes.data,
     },
   };
 };
