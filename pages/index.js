@@ -1,13 +1,12 @@
-import axios from "axios";
 import { useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import Add from "../components/Add";
 import AddButton from "../components/AddButton";
 import Featured from "../components/Featured";
 import PizzaList from "../components/PizzaList";
 import styles from "../styles/Home.module.css";
 import Footer from "../components/Footer";
+import { MongoClient } from "mongodb";
 
 export default function Home({ pizzas, admin }) {
   const [close, setClose] = useState(true);
@@ -45,7 +44,7 @@ export default function Home({ pizzas, admin }) {
 // };
 
 
-export async function getStaticProps() {
+export async function getStaticProps(ctx) {
   const myCookie = ctx.req?.cookies || "";
   let admin = false;
 
