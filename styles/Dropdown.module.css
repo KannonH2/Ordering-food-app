@@ -1,0 +1,9 @@
+.container{
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.subcontainer{
+  width: 100%;
+  
+}

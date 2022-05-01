@@ -1,0 +1,228 @@
+.container {
+  width: 100%;
+  height: 6rem;
+  padding: 0 3rem 0 2rem;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.itemCall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item:nth-child(2) {
+  flex: 3;
+}
+
+.item:last-child {
+  justify-content: flex-end;
+}
+
+.callButton {
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: 3.1rem;
+  height: 3.1rem;
+}
+
+.texts {
+  margin-left: 1.3rem;
+  color: white;
+}
+
+.text:first-child {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.text:last-child {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.list {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  color: white;
+  height: 6rem;
+}
+
+.listItem {
+  margin: 6rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cart{
+    position: relative;
+    cursor: pointer;
+}
+
+.counter{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #d1411e;
+}
+
+/* ---------- Dropdown Menu ---------- */
+
+.dropDownTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem;
+  background-color: #000;
+}
+
+.iconMenu {
+  margin: 0.5rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.iconMenu:hover {
+  background-color: #ffffff;
+  color: #000;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2rem;
+}
+
+.dropDownContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: absolute;
+  left: 0;
+  width: 15rem;
+  height: 15rem;
+}
+
+.dropDownItem {
+  margin: 0.6rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dropDownItem:hover {
+  width: 100%;
+  background-color: #d1411e;
+  color: white;
+}
+
+/* ---------- Call Button dropdown ---------- */
+
+.dropDownItemCalls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  border-bottom: #000 solid 1px;
+}
+
+.dropDownItemCall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropDownItemCall:nth-child(2) {
+  flex: 3;
+}
+
+.dropDownItemCall:last-child {
+  justify-content: flex-end;
+}
+
+.dropDowncallButton {
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: 3.1rem;
+  height: 3.1rem;
+}
+
+.dropDowntexts {
+  margin-left: 1.3rem;
+  color: rgb(0, 0, 0);
+}
+
+.dropDowntext:first-child {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.dropDowntext:last-child {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 768px) {
+  .listItem {
+    display: none;
+  }
+  .itemCall {
+    display: none;
+  }
+  .cart {
+    display: none;
+  }
+  .imgLogo {
+    width: 100%;
+    margin: 0 1rem 0 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dropdownMenu {
+    display: none;
+  }
+  .dropDownContent{
+    display: none;
+  }
+  
+}
+  
+
+
+
+
+
+

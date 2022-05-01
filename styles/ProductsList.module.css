@@ -1,0 +1,109 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.selectText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+
+.filter {
+  width: 30%;
+  font-size: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+
+.filter select {
+  width: 20%;
+  height: 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.filter select:focus {
+  outline: none;
+}
+
+.filter select:hover {
+  background-color: rgb(204, 204, 204);
+}
+
+@media screen and (max-width: 990px) {
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .selectText {
+    font-size: 1.5rem;
+    font-weight: bold;
+    align-self: center;
+    color: rgb(255, 255, 255);
+  }
+  
+  .filter {
+    width: 50%;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-right: 1rem;
+    padding: 1rem;
+  }
+  
+  .filter select {
+    width: 50%;
+    height: 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .filter select {
+    width: 70%;
+    height: 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+  }
+}

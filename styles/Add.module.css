@@ -1,0 +1,168 @@
+.mainAddButton {
+  padding: 10px;
+  margin: 20px;
+  background-color: #e31837;
+  width: 150px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(245, 240, 240, 0.52);
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 500px;
+  background-color: white;
+  padding: 10px 50px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;
+}
+
+.priceCategory {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.8rem;
+}
+
+.label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.textarea {
+  resize: none;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+}
+
+.priceContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.priceLabel {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  align-self: center;
+}
+
+.inputSm {
+  width: 25%;
+  margin-right: 0.7rem;
+  
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.extra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.extraItems {
+  margin: 10px 0px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.extraItem {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid tomato;
+  background-color: white;
+  color: tomato;
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.extraButton {
+  width: 20%;
+  height: 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #e31837;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.2rem;
+  align-self: center;
+}
+
+
+.extraButton:hover {
+  color: #fff;
+  background: #ffc500;
+  transition: 0.2s ease-out;
+  cursor: pointer;
+}
+
+.addButton {
+  width: 40%;
+  height: 2rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: #e31837;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.4rem;
+  align-self: center;
+  margin: 0.6rem 0 1rem 0;
+}
+
+.addButton:hover {
+  color: #fff;
+  background: #ffc500;
+  transition: 0.2s ease-out;
+  cursor: pointer;
+}
