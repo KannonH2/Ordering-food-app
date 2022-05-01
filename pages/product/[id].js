@@ -128,7 +128,7 @@ export const getStaticProps = async ({ params }) => {
   if (process.env.VERCEL_URL === "http://localhost:3000") {
     baseUrl = "http://localhost:3000";
   } else {
-    baseUrl = "https://vercel.com/api/now/ip";
+    baseUrl = "https://donjuan-pizzeria.vercel.app";
   }
 
   //let deployUrl = "https://donjuan-pizzeria.vercel.app";
@@ -147,7 +147,7 @@ export const getStaticPaths = async () => {
   if (process.env.VERCEL_URL === "http://localhost:3000") {
     baseUrl = "http://localhost:3000";
   } else {
-    baseUrl = "https://vercel.com/api/now/ip";
+    baseUrl = "https://donjuan-pizzeria.vercel.app";
   }
 
   //let deployUrl = "https://donjuan-pizzeria.vercel.app";
