@@ -118,7 +118,7 @@ const Product = ({ pizza }) => {
   if (baseUrl) {
     baseUrl = "https://donjuan-pizzeria.vercel.app/";
   }
-  const res = await axios.get(`${baseUrl}/api/products/${params.id}`);
+  const res = await axios.get(`${baseUrl}/api/product/${params.id}`);
   
   return {
     props: { pizza: res.data },
