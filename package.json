@@ -9,7 +9,7 @@
     "test": "npx nodemon util/mercadoPago.js"
   },
   "engines": {
-    "node": "16.14.2"
+    "node": "14.x"
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^7.6.0",
