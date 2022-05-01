@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PizzaCard from "../components/PizzaCard";
-import styles from "../styles/productsList.module.css";
+import styles from "../styles/ProductsList.module.css";
 import Footer from "../components/Footer";
 
 const productsList = ({ pizzas }) => {
