@@ -3,6 +3,7 @@ import axios from "axios";
 import PizzaCard from "../components/PizzaCard";
 import styles from "../styles/ProductsList.module.css";
 import Footer from "../components/Footer";
+import { MongoClient } from "mongodb";
 
 const productsList = ({ pizzas }) => {
   const [category, setCategory] = useState(null);
@@ -80,20 +81,40 @@ const productsList = ({ pizzas }) => {
   );
 };
 
-export const getServerSideProps = async (ctx) => {
-  const myCookie = ctx.req?.cookies || "";
-  let admin = false;
-  if (myCookie.token === process.env.TOKEN) {
-    admin = true;
-  }
-  const res = await axios.get("http://localhost:3000/api/products");
+// export const getServerSideProps = async (ctx) => {
+//   const myCookie = ctx.req?.cookies || "";
+//   let admin = false;
+//   if (myCookie.token === process.env.TOKEN) {
+//     admin = true;
+//   }
+//   const res = await axios.get("http://localhost:3000/api/products");
+
+//   return {
+//     props: {
+//       pizzas: res.data,
+//       admin,
+//     },
+//   };
+// };
+
+export async function getStaticProps() {
+  const DATABASE_NAME = "DonJuan";
+  const DATABASE_PASSWORD = "fernando";
+
+  const client = await MongoClient.connect(
+    `mongodb+srv://manax:${DATABASE_PASSWORD}@donjuan.wm8z2.mongodb.net/${DATABASE_NAME}?retryWrites=true&w=majority`
+  );
+  const db = client.db();
+  const productsCollection = db.collection("products");
+  const pizzas = await productsCollection.find().toArray();
+
+  client.close();
 
   return {
     props: {
-      pizzas: res.data,
-      admin,
+      pizzas: JSON.parse(JSON.stringify(pizzas)),
     },
   };
-};
+}
 
 export default productsList;

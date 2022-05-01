@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "../../styles/Admin.module.css";
 import Link from "next/link";
 
+
 const Index = ({ orders, products }) => {
   const [pizzaList, setPizzaList] = useState(products);
   const [orderList, setOrderList] = useState(orders);

@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 
 export default function Home({ pizzas, admin }) {
   const [close, setClose] = useState(true);
+
   return (
     <div className={styles.container}>
       <Head>

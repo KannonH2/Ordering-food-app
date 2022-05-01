@@ -53,7 +53,7 @@ const Product = ({ pizza }) => {
         <h1 className={styles.title}>{pizza.title}</h1>
         <span className={styles.price}>${price}</span>
         <p className={styles.desc}>{pizza.desc}</p>
-        <h3 className={styles.choose}>Choose the size</h3>
+        <h3 className={styles.choose}>Elige un Tamaño</h3>
 
         {pizza.category === "burger" ? (
           <div className={styles.sizes}>
@@ -103,7 +103,7 @@ const Product = ({ pizza }) => {
             className={styles.quantity}
           />
           <button className={styles.button} onClick={handleClick}>
-            Add to Cart
+            Agregar al carrito
           </button>
         </div>
       </div>
