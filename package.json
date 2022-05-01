@@ -8,9 +8,6 @@
     "lint": "next lint",
     "test": "npx nodemon util/mercadoPago.js"
   },
-  "engines": {
-    "node": "14.x"
-  },
   "dependencies": {
     "@paypal/react-paypal-js": "^7.6.0",
     "@popperjs/core": "^2.11.5",
