@@ -122,7 +122,7 @@ const Product = ({ pizza }) => {
 //  };
 
 export const getStaticProps = async ({ params }) => {
-  let baseUrl = "http://localhost:3000";
+  let baseUrl = process.env.VERCEL_URL;
   if (baseUrl !== "http://localhost:3000") {
     baseUrl = "https://donjuan-pizzeria.vercel.app/";
   }
@@ -134,7 +134,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  let baseUrl = "http://localhost:3000";
+  let baseUrl = process.env.VERCEL_URL;
   if (baseUrl !== "http://localhost:3000") {
     baseUrl = "https://donjuan-pizzeria.vercel.app/";
   }
